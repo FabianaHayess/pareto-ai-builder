@@ -153,6 +153,12 @@ if "resultado_erp_beta" not in st.session_state:
 if "beta_corrigida" not in st.session_state:
     st.session_state.beta_corrigida = None
 
+if "email_beta_recebido" not in st.session_state:
+    st.session_state.email_beta_recebido = False
+
+if "email_beta_processado" not in st.session_state:
+    st.session_state.email_beta_processado = False
+
 
 # =========================================================
 # CABEÇALHO
@@ -165,6 +171,86 @@ st.caption(
     "Propostas recebidas por e-mail, interpretadas por IA "
     "e verificadas automaticamente antes da decisão comercial."
 )
+
+st.divider()
+
+
+# =========================================================
+# DEMONSTRAÇÃO — ENTRADA DO E-MAIL
+# =========================================================
+
+st.markdown("## 📩 Entrada da negociação")
+
+st.caption(
+    "Demonstração do ponto de entrada usando a proposta da Beta "
+    "fornecida no dataset do case."
+)
+
+if not st.session_state.email_beta_recebido:
+
+    st.info(
+        "A proposta da Distribuidora Beta ainda não entrou no fluxo "
+        "desta demonstração."
+    )
+
+    if st.button(
+        "📩 Simular chegada do e-mail da Beta",
+        type="primary",
+        use_container_width=True
+    ):
+        st.session_state.email_beta_recebido = True
+        st.session_state.email_beta_processado = False
+        st.rerun()
+
+else:
+
+    with st.container(border=True):
+
+        st.markdown("**De:** Distribuidora Beta")
+        st.markdown("**Assunto:** Condição comercial HPC")
+
+        st.text(
+            """Olá, pessoal.
+
+Conforme negociação comercial, a proposta contempla 13% de desconto
+para a linha HPC, nas lojas Tijuca, Méier e Botafogo, com vigência
+de 01/10/2026 a 31/03/2027.
+
+Contrapartida: ponto extra no corredor de higiene nas três lojas."""
+        )
+
+        st.caption(
+            "E-mail apresentado como texto livre antes da estruturação."
+        )
+
+    if not st.session_state.email_beta_processado:
+
+        if st.button(
+            "🤖 Processar e-mail com IA",
+            type="primary",
+            use_container_width=True
+        ):
+            st.session_state.email_beta_processado = True
+            st.rerun()
+
+    else:
+
+        st.success(
+            "E-mail processado. A proposta foi estruturada e está "
+            "disponível na Central de Negociações."
+        )
+
+        if st.button(
+            "↩️ Reiniciar demonstração",
+            use_container_width=True
+        ):
+            st.session_state.email_beta_recebido = False
+            st.session_state.email_beta_processado = False
+            st.session_state.payload_beta = None
+            st.session_state.idempotency_beta = None
+            st.session_state.resultado_erp_beta = None
+            st.session_state.beta_corrigida = None
+            st.rerun()
 
 st.divider()
 
