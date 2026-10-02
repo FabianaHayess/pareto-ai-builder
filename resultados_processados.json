@@ -1,0 +1,209 @@
+{
+  "ALFA": {
+    "caso": "ALFA",
+    "status_final": "REVISAO_HUMANA",
+    "extracao": {
+      "fornecedor": "Alfa Pharma",
+      "categoria": "linha de genéricos Alfa",
+      "condicoes": [
+        {
+          "tipo": "DESCONTO_PERCENTUAL",
+          "percentual": 28.0,
+          "valor": null,
+          "lojas": [
+            "toda a rede"
+          ],
+          "data_inicio": "2026-10-01",
+          "data_fim": "2026-12-31",
+          "contrapartida": "Ponta de gôndola nas 10 lojas de maior giro durante toda a campanha; a rede define quais lojas e envia a lista."
+        }
+      ],
+      "campos_ausentes": [],
+      "divergencias": [],
+      "fonte": "2026-09-28_0912_alfa.eml"
+    },
+    "verificacoes": {
+      "fornecedor": {
+        "status": "OK",
+        "cod_fornecedor": "FORN-001",
+        "razao_social": "ALFA PHARMA INDUSTRIA FARMACEUTICA LTDA"
+      },
+      "politica_desconto": {
+        "status": "REVISAO_HUMANA",
+        "motivo": "EVIDENCIA_TRADE_MARKETING_NECESSARIA",
+        "percentual": 28.0,
+        "teto_normal": 15.0,
+        "teto_excecao": 30.0,
+        "mensagem": "O desconto excede o teto normal. A política permite até 30% para campanhas sazonais aprovadas pelo Trade Marketing, mas essa aprovação precisa ser comprovada."
+      }
+    }
+  },
+  "GAMA": {
+    "caso": "GAMA",
+    "status_final": "REVISAO_HUMANA",
+    "extracao": {
+      "fornecedor": "Gama Dermocosméticos",
+      "categoria": "linha dermo",
+      "condicoes": [
+        {
+          "tipo": "DESCONTO_PERCENTUAL",
+          "percentual": 12.0,
+          "valor": null,
+          "lojas": [
+            "Copacabana",
+            "Ipanema",
+            "Leblon",
+            "Barra (shopping)"
+          ],
+          "data_inicio": "2026-10-15",
+          "data_fim": null,
+          "contrapartida": null
+        },
+        {
+          "tipo": "DESCONTO_PERCENTUAL",
+          "percentual": 12.5,
+          "valor": null,
+          "lojas": [
+            "Copacabana",
+            "Ipanema",
+            "Leblon",
+            "Barra (shopping)"
+          ],
+          "data_inicio": "2026-10-15",
+          "data_fim": null,
+          "contrapartida": null
+        },
+        {
+          "tipo": "VERBA_EXPOSICAO",
+          "percentual": null,
+          "valor": 8000.0,
+          "lojas": [
+            "Copacabana",
+            "Ipanema",
+            "Leblon",
+            "Barra (shopping)"
+          ],
+          "data_inicio": "2026-10-15",
+          "data_fim": null,
+          "contrapartida": "Montagem de ilha promocional. O anexo detalha R$ 2.000,00 por loja; em Copacabana e Ipanema, ilha na entrada; em Barra (shopping), loja do piso L2."
+        }
+      ],
+      "campos_ausentes": [
+        "data_fim"
+      ],
+      "divergencias": [
+        "Percentual de desconto: o e-mail informa 12% e o anexo informa 12,5% para as lojas listadas."
+      ],
+      "fonte": "2026-09-28_1640_gama.eml e proposta_gama_q4.csv"
+    },
+    "verificacoes": {
+      "fornecedor": {
+        "status": "OK",
+        "cod_fornecedor": "FORN-003",
+        "razao_social": "GAMA DERMOCOSMETICOS S.A."
+      },
+      "documento": {
+        "status": "REVISAO_HUMANA",
+        "problemas": [
+          {
+            "tipo": "CAMPO_AUSENTE",
+            "detalhes": [
+              "data_fim"
+            ]
+          },
+          {
+            "tipo": "DIVERGENCIA_ENTRE_FONTES",
+            "detalhes": [
+              "Percentual de desconto: o e-mail informa 12% e o anexo informa 12,5% para as lojas listadas."
+            ]
+          }
+        ]
+      },
+      "politica_verba": {
+        "status": "DENTRO_DA_POLITICA",
+        "valor": 8000.0,
+        "alcada": "DIRETORIA_COMERCIAL"
+      }
+    }
+  },
+  "BETA": {
+    "caso": "BETA",
+    "status_final": "REVISAO_HUMANA",
+    "extracao": {
+      "fornecedor": "Distribuidora Beta",
+      "categoria": "HPC",
+      "condicoes": [
+        {
+          "tipo": "DESCONTO_PERCENTUAL",
+          "percentual": 13.0,
+          "valor": null,
+          "lojas": [
+            "Tijuca",
+            "Méier",
+            "Botafogo"
+          ],
+          "data_inicio": "2026-10-01",
+          "data_fim": "2027-03-31",
+          "contrapartida": "Ponto extra no corredor de higiene nas três lojas, durante toda a vigência."
+        }
+      ],
+      "campos_ausentes": [],
+      "divergencias": [],
+      "fonte": "2026-09-29_1005_beta.eml"
+    },
+    "verificacoes": {
+      "fornecedor": {
+        "status": "OK",
+        "cod_fornecedor": "FORN-002",
+        "razao_social": "BETA DISTRIBUIDORA DE PRODUTOS DE HIGIENE LTDA"
+      },
+      "politica_desconto": {
+        "status": "DENTRO_DA_POLITICA",
+        "percentual": 13.0,
+        "teto_categoria": 20.0,
+        "alcada": "GERENCIA_COMERCIAL"
+      },
+      "sobreposicao_erp": {
+        "status": "REVISAO_HUMANA",
+        "motivo": "SOBREPOSICAO_CONDICAO_VIGENTE",
+        "condicoes_conflitantes": [
+          "COND-003"
+        ],
+        "mensagem": "Existe condição comercial vigente para o mesmo fornecedor, categoria, loja e período."
+      }
+    }
+  },
+  "NUTRIVIDA": {
+    "caso": "NUTRIVIDA",
+    "status_final": "BLOQUEADO",
+    "extracao": {
+      "fornecedor": "Nutrivida Suplementos",
+      "categoria": "suplementos",
+      "condicoes": [
+        {
+          "tipo": "DESCONTO_PERCENTUAL",
+          "percentual": 18.0,
+          "valor": null,
+          "lojas": [
+            "toda a rede"
+          ],
+          "data_inicio": "2026-10-01",
+          "data_fim": "2027-09-30",
+          "contrapartida": "exposição em prateleira na altura dos olhos"
+        }
+      ],
+      "campos_ausentes": [],
+      "divergencias": [],
+      "fonte": "2026-09-29_1830_nutrivida.eml"
+    },
+    "verificacoes": {
+      "fornecedor": {
+        "status": "BLOQUEADO",
+        "motivo": "FORNECEDOR_INATIVO",
+        "cod_fornecedor": "FORN-005",
+        "razao_social": "NUTRIVIDA SUPLEMENTOS ALIMENTARES LTDA",
+        "detalhe": "PENDENCIA DOCUMENTAL - CERTIDAO FISCAL VENCIDA"
+      }
+    }
+  }
+}
